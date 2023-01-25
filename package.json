@@ -1,0 +1,26 @@
+{
+  "name": "unix-commands",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "docker:up": "docker-compose --env-file .env -f docker/unix-commands/compose.yml up -d",
+    "docker:down": "docker-compose --env-file .env -f docker/unix-commands/compose.yml down",
+    "db:migration:create": "pnpm exec prisma migrate dev",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.9.0",
+    "astro": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "prisma": "^4.9.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}
