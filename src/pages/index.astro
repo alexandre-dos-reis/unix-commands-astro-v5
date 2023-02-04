@@ -1,10 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { prisma } from "@/utils/db";
-
-const commands = await prisma.command.findMany();
 ---
 
-<Layout title="Welcome to Astro.">
-  <ul>{commands.map((c) => <li>{c.title}</li>)}</ul>
-</Layout>
+<Layout title="Welcome to Astro.">Bienvenue...</Layout>

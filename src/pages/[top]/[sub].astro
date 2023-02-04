@@ -1,0 +1,24 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getSubCommands } from "@/utils/queries";
+import { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  return (await getSubCommands()).map((c) => {
+    const [top, sub] = c.slug.split("/");
+    return { params: { top, sub }, props: { command: c } };
+  });
+}
+
+interface Props {
+  command: CollectionEntry<"commands">;
+}
+
+const { command } = Astro.props;
+
+const { Content, headings, remarkPluginFrontmatter } = await command.render();
+---
+
+<Layout title="Welcome to Astro.">
+  <Content />
+</Layout>

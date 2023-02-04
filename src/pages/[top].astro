@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getTopCommands } from "@/utils/queries";
+import { CollectionEntry, getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  return (await getTopCommands()).map((c) => {
+    return { params: { top: c.slug }, props: { command: c } };
+  });
+}
+
+interface Props {
+  command: CollectionEntry<"commands">;
+}
+
+const { command } = Astro.props;
+
+const subCommands = await getCollection("commands", (data) => {
+  return (
+    data.slug.startsWith(command.slug) && !data.slug.endsWith(command.slug)
+  );
+});
+
+const { Content, headings, remarkPluginFrontmatter } = await command.render();
+---
+
+<Layout title="Welcome to Astro.">
+  <div class="mb-5"><Content /></div>
+  {
+    subCommands.map((sc) => (
+      <div>
+        <a href={sc.slug}>{sc.slug.split('/')[1]}</a>
+      </div>
+    ))
+  }
+</Layout>
