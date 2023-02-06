@@ -4,6 +4,7 @@ const commandCollection = defineCollection({
   schema: z.object({
     sort: z.number().optional(),
     title: z.string(),
+    image: z.string().optional(),
   }),
 });
 

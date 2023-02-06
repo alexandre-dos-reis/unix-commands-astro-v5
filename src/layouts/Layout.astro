@@ -12,7 +12,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,10 +22,10 @@ const { title } = Astro.props;
   </head>
   <body>
     <main class="p-5">
-      <ul class="grid mb-10">
+      <ul class="flex flex-wrap gap-5 mb-10">
         {
           commands.map((c) => (
-            <li class="mb-10">
+            <li class="">
               <a href={`/${c.slug}`}>{c.slug}</a>
             </li>
           ))

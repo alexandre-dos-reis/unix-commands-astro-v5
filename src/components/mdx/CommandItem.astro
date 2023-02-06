@@ -1,0 +1,14 @@
+---
+interface Props {
+  i: string;
+  env?: string;
+}
+
+const { i, env } = Astro.props;
+---
+
+<div class="bg-red-500">
+  <div class="bg-blue-500">{i}</div>
+  <div class="bg-green-500">{env}</div>
+  <div><slot /></div>
+</div>

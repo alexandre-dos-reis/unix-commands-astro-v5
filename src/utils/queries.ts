@@ -14,3 +14,7 @@ export const getTopCommands = async () => {
     sort
   );
 };
+
+export const getCommands = async () => {
+  return (await getCollection("commands")).sort(sort);
+};
